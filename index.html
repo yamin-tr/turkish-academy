@@ -3,59 +3,106 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>أكاديمية تعلم اللغة التركية - نطق الكلمات</title>
+    <title>أكاديمية يامين للتركية - المرجع الشامل</title>
     <style>
-        body { font-family: 'Segoe UI', sans-serif; background-color: #f4f4f4; text-align: center; padding: 20px; }
-        .container { max-width: 600px; margin: auto; background: white; padding: 20px; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
-        h1 { color: #c8102e; }
-        .word-card { background: #fff5f5; border: 2px solid #c8102e; padding: 15px; margin: 10px 0; border-radius: 10px; display: flex; justify-content: space-between; align-items: center; }
-        .turkish { font-size: 1.5em; font-weight: bold; color: #333; }
-        .arabic { color: #666; font-size: 1.1em; }
-        button.speak-btn { background: #c8102e; color: white; border: none; padding: 10px 15px; border-radius: 50%; cursor: pointer; font-size: 1.2em; }
-        button.speak-btn:hover { background: #a00d25; }
+        :root { --main-red: #c8102e; --bg-gray: #f8f9fa; }
+        body { font-family: 'Segoe UI', Tahoma, sans-serif; background-color: var(--bg-gray); margin: 0; padding: 20px; text-align: center; }
+        .container { max-width: 800px; margin: auto; background: white; padding: 30px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+        h1 { color: var(--main-red); font-size: 2.2em; border-bottom: 3px solid var(--main-red); display: inline-block; padding-bottom: 10px; }
+        
+        /* تصميم الفهرس */
+        .index-box { background: #fff5f5; padding: 20px; border-radius: 15px; margin: 20px 0; text-align: right; border-right: 5px solid var(--main-red); }
+        .index-box h3 { margin-top: 0; color: #333; }
+        .index-box ul { list-style: none; padding: 0; }
+        .index-box li { margin: 10px 0; }
+        .index-box a { color: var(--main-red); text-decoration: none; font-weight: bold; }
+        .index-box a:hover { text-decoration: underline; }
+
+        /* تصميم الدروس */
+        .section { margin-top: 50px; padding-top: 20px; border-top: 1px dashed #ccc; text-align: right; }
+        .grammar-box { background: #eef2ff; border-right: 5px solid #4f46e5; padding: 15px; border-radius: 8px; margin: 15px 0; line-height: 1.6; }
+        .word-card { background: white; border: 1px solid #ddd; padding: 15px; margin: 10px 0; border-radius: 12px; display: flex; justify-content: space-between; align-items: center; transition: 0.3s; }
+        .word-card:hover { transform: translateY(-3px); box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+        
+        .turkish { font-size: 1.3em; font-weight: bold; color: #333; }
+        .arabic { color: #666; font-size: 1em; margin-right: 10px; }
+        .speak-btn { background: var(--main-red); color: white; border: none; width: 40px; height: 40px; border-radius: 50%; cursor: pointer; font-size: 1.1em; }
+        
+        .back-to-top { font-size: 0.8em; color: #999; text-decoration: none; display: block; margin-top: 10px; }
     </style>
 </head>
 <body>
 
     <div class="container">
-        <h1>🇹🇷 الدرس الأول: الأرقام</h1>
-        <p>اضغط على أيقونة السماعة لسماع نطق الكلمة بالتركية:</p>
-
-        <div class="word-card">
-            <div>
-                <span class="turkish">Bir</span> 
-                <span class="arabic">(واحد)</span>
-            </div>
-            <button class="speak-btn" onclick="speak('Bir')">🔊</button>
+        <h1>🇹🇷 أكاديمية يامن للغة التركية</h1>
+        
+        <div class="index-box">
+            <h3>📌 فهرس المحتويات:</h3>
+            <ul>
+                <li><a href="#lesson1">1. الأرقام الأساسية (نطق)</a></li>
+                <li><a href="#lesson2">2. التحيات اليومية (نطق)</a></li>
+                <li><a href="#grammar1">3. قاعدة الجملة الاسمية (دروس لغوية)</a></li>
+                <li><a href="#lesson3">4. الألوان (نطق)</a></li>
+            </ul>
         </div>
 
-        <div class="word-card">
-            <div>
-                <span class="turkish">İki</span> 
-                <span class="arabic">(اثنان)</span>
+        <div id="lesson1" class="section">
+            <h2>🔢 الدرس 1: الأرقام</h2>
+            <div class="word-card">
+                <div><span class="turkish">Bir</span> <span class="arabic">(واحد)</span></div>
+                <button class="speak-btn" onclick="speak('Bir')">🔊</button>
             </div>
-            <button class="speak-btn" onclick="speak('İki')">🔊</button>
+            <div class="word-card">
+                <div><span class="turkish">İki</span> <span class="arabic">(اثنان)</span></div>
+                <button class="speak-btn" onclick="speak('İki')">🔊</button>
+            </div>
+            <a href="#" class="back-to-top">↑ العودة للفهرس</a>
         </div>
 
-        <div class="word-card">
-            <div>
-                <span class="turkish">Üç</span> 
-                <span class="arabic">(ثلاثة)</span>
+        <div id="lesson2" class="section">
+            <h2>👋 الدرس 2: التحيات</h2>
+            <div class="word-card">
+                <div><span class="turkish">Günaydın</span> <span class="arabic">(صباح الخير)</span></div>
+                <button class="speak-btn" onclick="speak('Günaydın')">🔊</button>
             </div>
-            <button class="speak-btn" onclick="speak('Üç')">🔊</button>
+            <div class="word-card">
+                <div><span class="turkish">Nasılsın?</span> <span class="arabic">(كيف حالك؟)</span></div>
+                <button class="speak-btn" onclick="speak('Nasılsın?')">🔊</button>
+            </div>
+            <a href="#" class="back-to-top">↑ العودة للفهرس</a>
         </div>
+
+        <div id="grammar1" class="section">
+            <h2>📖 الدرس اللغوي: ضمائر المتكلم</h2>
+            <div class="grammar-box">
+                <b>قاعدة أساسية:</b> في اللغة التركية، الضمائر هي أساس تكوين الجملة. إليك أهم الضمائر:
+                <ul>
+                    <li><b>Ben:</b> أنا</li>
+                    <li><b>Sen:</b> أنت/أنتِ</li>
+                    <li><b>O:</b> هو/هي</li>
+                </ul>
+                <i>* ملاحظة: لا يوجد فرق بين المذكر والمؤنث في الضمائر التركية.</i>
+            </div>
+            <a href="#" class="back-to-top">↑ العودة للفهرس</a>
+        </div>
+
+        <div id="lesson3" class="section">
+            <h2>🎨 الدرس 3: الألوان</h2>
+            <div class="word-card">
+                <div><span class="turkish">Kırmızı</span> <span class="arabic">(أحمر)</span></div>
+                <button class="speak-btn" onclick="speak('Kırmızı')">🔊</button>
+            </div>
+            <div class="word-card">
+                <div><span class="turkish">Mavi</span> <span class="arabic">(أزرق)</span></div>
+                <button class="speak-btn" onclick="speak('Mavi')">🔊</button>
+            </div>
+            <a href="#" class="back-to-top">↑ العودة للفهرس</a>
+        </div>
+
     </div>
 
     <script>
         function speak(text) {
-            // إنشاء كائن النطق
             const utterance = new SpeechSynthesisUtterance(text);
-            // تحديد اللغة التركية
             utterance.lang = 'tr-TR'; 
-            // تشغيل الصوت
-            window.speechSynthesis.speak(utterance);
-        }
-    </script>
-
-</body>
-</html>
+            window.speechSynthesis.speak

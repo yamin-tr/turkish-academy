@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الدرس 1: الأرقام - أكاديمية يامن</title>
+    <style>
+        :root { --main-red: #c8102e; --bg: #f5f6fa; }
+        body { font-family: 'Segoe UI', sans-serif; background: var(--bg); margin: 0; padding: 20px; text-align: center; }
+        
+        .header-nav { display: flex; align-items: center; margin-bottom: 20px; }
+        .back-btn { text-decoration: none; color: var(--main-red); font-weight: bold; font-size: 1.1rem; background: white; padding: 8px 15px; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+
+        .lesson-card { background: white; max-width: 500px; margin: auto; padding: 25px; border-radius: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.05); }
+        h2 { color: var(--main-red); border-bottom: 2px solid #eee; padding-bottom: 10px; }
+        
+        .section-title { background: #eee; padding: 5px; border-radius: 5px; margin-top: 25px; color: #555; font-size: 0.9rem; }
+        
+        .word-row { display: flex; justify-content: space-between; align-items: center; padding: 12px 10px; border-bottom: 1px solid #fafafa; }
+        .turkish { font-size: 1.2rem; font-weight: bold; color: #333; }
+        .arabic { color: #888; }
+        
+        .speak-btn { background: var(--main-red); color: white; border: none; width: 40px; height: 40px; border-radius: 50%; cursor: pointer; font-size: 1.1rem; display: flex; align-items: center; justify-content: center; }
+        .speak-btn:active { transform: scale(0.9); }
+    </style>
+</head>
+<body>
+
+    <div class="header-nav">
+        <a href="index.html" class="back-btn">🔙 العودة للرئيسية</a>
+    </div>
+
+    <div class="lesson-card">
+        <h2>🔢 الدرس 1: الأرقام (Sayılar)</h2>
+        
+        <div class="section-title">الأرقام من 1 إلى 10</div>
+        <div class="word-row"><div><span class="turkish">Bir</span> <span class="arabic">(1)</span></div><button class="speak-btn" onclick="speak('Bir')">🔊</button></div>
+        <div class="word-row"><div><span class="turkish">İki</span> <span class="arabic">(2)</span></div><button class="speak-btn" onclick="speak('İki')">🔊</button></div>
+        <div class="word-row"><div><span class="turkish">Üç</span> <span class="arabic">(3)</span></div><button class="speak-btn" onclick="speak('Üç')">🔊</button></div>
+        <div class="word-row"><div><span class="turkish">Dört</span> <span class="arabic">(4)</span></div><button class="speak-btn" onclick="speak('Dört')">🔊</button></div>
+        <div class="word-row"><div><span class="turkish">Beş</span> <span class="arabic">(5)</span></div><button class="speak-btn" onclick="speak('Beş')">🔊</button></div>
+        <div class="word-row"><div><span class="turkish">Altı</span> <span class="arabic">(6)</span></div><button class="speak-btn" onclick="speak('Altı')">🔊</button></div>
+        <div class="word-row"><div><span class="turkish">Yedi</span> <span class="arabic">(7)</span></div><button class="speak-btn" onclick="speak('Yedi')">🔊</button></div>
+        <div class="word-row"><div><span class="turkish">Sekiz</span> <span class="arabic">(8)</span></div><button class="speak-btn" onclick="speak('Sekiz')">🔊</button></div>
+        <div class="word-row"><div><span class="turkish">Dokuz</span> <span class="arabic">(9)</span></div><button class="speak-btn" onclick="speak('Dokuz')">🔊</button></div>
+        <div class="word-row"><div><span class="turkish">On</span> <span class="arabic">(10)</span></div><button class="speak-btn" onclick="speak('On')">🔊</button></div>
+
+        <div class="section-title">الأرقام من 11 إلى 20</div>
+        <div class="word-row"><div><span class="turkish">On Bir</span> <span class="arabic">(11)</span></div><button class="speak-btn" onclick="speak('On Bir')">🔊</button></div>
+        <div class="word-row"><div><span class="turkish">On İki</span> <span class="arabic">(12)</span></div><button class="speak-btn" onclick="speak('On İki')">🔊</button></div>
+        <div class="word-row"><div><span class="turkish">Yirmi</span> <span class="arabic">(20)</span></div><button class="speak-btn" onclick="speak('Yirmi')">🔊</button></div>
+
+        <div class="section-title">العشرات (العد بـ 10)</div>
+        <div class="word-row"><div><span class="turkish">Otuz</span> <span class="arabic">(30)</span></div><button class="speak-btn" onclick="speak('Otuz')">🔊</button></div>
+        <div class="word-row"><div><span class="turkish">Kırk</span> <span class="arabic">(40)</span></div><button class="speak-btn" onclick="speak('Kırk')">🔊</button></div>
+        <div class="word-row"><div><span class="turkish">Elli</span> <span class="arabic">(50)</span></div><button class="speak-btn" onclick="speak('Elli')">🔊</button></div>
+        <div class="word-row"><div><span class="turkish">Yüz</span> <span class="arabic">(100)</span></div><button class="speak-btn" onclick="speak('Yüz')">🔊</button></div>
+    </div>
+
+    <script>
+        function speak(text) {
+            const utterance = new SpeechSynthesisUtterance(text);
+            utterance.lang = 'tr-TR';
+            window.speechSynthesis.speak(utterance);
+        }
+    </script>
+</body>
+</html>

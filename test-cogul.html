@@ -64,6 +64,8 @@
         <p>لقد أكملتِ تمرين الجمل بنجاح!</p>
         <div style="font-size: 2.5rem; font-weight: bold; margin: 20px 0;" id="final-score"></div>
         <button onclick="location.reload()" style="background: var(--main-red); color: white; padding: 15px; border:none; border-radius:12px; width:100%; cursor:pointer; font-weight:bold;">إعادة التحدي 🔄</button>
+        <br><br>
+        <a href="index.html" style="color: var(--dark-blue); text-decoration: none; font-weight: bold;">العودة للقائمة الرئيسية</a>
     </div>
 </div>
 
@@ -74,7 +76,7 @@
         { start: "Şu an", options: ["saat", "saatler"], correct: "saat", end: "dokuz." },
         { start: "Beş", options: ["bardak", "bardaklar"], correct: "bardak", end: "çay aldım." },
         { start: "Çok güzel", options: ["hayal", "hayaller"], correct: "hayaller", end: "kuruyorum." },
-        { start: "Sınıfta", options: ["çocuk", "çocuklar"], correct: "çocuklar", end: "oynuyor." },
+        { start: "Sınıfta", options: ["çocuk", "çocuklar"], correct: "çocuklar", end: "oyنıyor." },
         { start: "On", options: ["dakika", "dakikalar"], correct: "dakika", end: "bekle." }
     ];
 
@@ -98,10 +100,11 @@
     }
 
     function verifyAnswer() {
-        // هذه الحركة تجعل المتصفح يسمح بالصوت لاحقاً
-        applause.play();
-        applause.pause();
-        applause.currentTime = 0;
+        // تهيئة الصوت للعمل على الهواتف
+        applause.play().then(() => {
+            applause.pause();
+            applause.currentTime = 0;
+        }).catch(e => console.log("Init audio"));
 
         const userVal = document.getElementById('user-select').value;
         const msg = document.getElementById('message');
@@ -141,21 +144,18 @@
         document.getElementById('hands').style.display = "block";
         
         // تشغيل صوت التصفاق
-        applause.play().catch(error => console.log("خطأ في تشغيل الصوت:", error));
+        applause.play().catch(error => console.log("Audio play error"));
         
-        confetti({ particleCount: 150, spread: 70, origin: { y: 0.6 }, colors: ['#c8102e', '#ffffff'] });
+        // مؤثرات الحلويات (Confetti)
+        confetti({ 
+            particleCount: 150, 
+            spread: 70, 
+            origin: { y: 0.6 }, 
+            colors: ['#c8102e', '#ffffff'] 
+        });
     }
 
     displayQuestion();
-</script>
-</body>
-</html>
-        // تشغيل صوت التصفاق
-        document.getElementById('applauseSound').play();
-
-        // مؤثرات الحلويات
-        confetti({ particleCount: 150, spread: 70, origin: { y: 0.6 }, colors: ['#c8102e', '#ffffff'] });
-    }
 </script>
 </body>
 </html>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>التحيات والتعارف الشامل | أكاديمية يامن</title>
+    <title>التحيات والتعارف الكامل | أكاديمية يامين</title>
     <style>
         :root { --main-red: #c8102e; --dark-blue: #2c3e50; }
         body { font-family: 'Segoe UI', sans-serif; background-color: #f5f6fa; margin: 0; padding: 20px; color: #333; }
@@ -16,7 +16,7 @@
         th { background: var(--dark-blue); color: white; }
         
         .turkish-cell { display: flex; align-items: center; justify-content: center; gap: 12px; }
-        .turkish-text { font-weight: bold; color: var(--main-red); font-size: 1.2rem; }
+        .turkish-text { font-weight: bold; color: var(--main-red); font-size: 1.2rem; direction: ltr; display: inline-block; }
         
         .speak-btn { 
             background: #f0f0f0; border: none; border-radius: 50%; width: 40px; height: 40px; 
@@ -31,7 +31,7 @@
 
 <div class="container">
     <h1>🇹🇷 التحيات والتعارف (Selamlaşma ve Tanışma)</h1>
-    <p style="text-align: center;">اضغطي على أيقونة 🔊 لسماع النطق الصحيح لكل عبارة.</p>
+    <p style="text-align: center;">اضغطي على 🔊 لسماع النطق التركي الصحيح.</p>
 
     <h2>1. التحيات اليومية (Günlük Selamlar)</h2>
     <table>
@@ -40,52 +40,47 @@
             <tr><td><div class="turkish-cell"><span class="turkish-text">Merhaba</span><button class="speak-btn" onclick="speak('Merhaba')">🔊</button></div></td><td>مرحباً</td></tr>
             <tr><td><div class="turkish-cell"><span class="turkish-text">Selam</span><button class="speak-btn" onclick="speak('Selam')">🔊</button></div></td><td>سلام</td></tr>
             <tr><td><div class="turkish-cell"><span class="turkish-text">Günaydın</span><button class="speak-btn" onclick="speak('Günaydın')">🔊</button></div></td><td>صباح الخير</td></tr>
-            <tr><td><div class="turkish-cell"><span class="turkish-text">Tünaydın</span><button class="speak-btn" onclick="speak('Tünaydın')">🔊</button></div></td><td>طاب يومك (بعد الظهر)</td></tr>
-            <tr><td><div class="turkish-cell"><span class="turkish-text">İyi günler</span><button class="speak-btn" onclick="speak('İyi günler')">🔊</button></div></td><td>طاب يومك / نهارك سعيد</td></tr>
+            <tr><td><div class="turkish-cell"><span class="turkish-text">İyi günler</span><button class="speak-btn" onclick="speak('İyi günler')">🔊</button></div></td><td>طاب يومك</td></tr>
             <tr><td><div class="turkish-cell"><span class="turkish-text">İyi akşamlar</span><button class="speak-btn" onclick="speak('İyi akşamlar')">🔊</button></div></td><td>مساء الخير</td></tr>
             <tr><td><div class="turkish-cell"><span class="turkish-text">İyi geceler</span><button class="speak-btn" onclick="speak('İyi geceler')">🔊</button></div></td><td>تصبح على خير</td></tr>
             <tr><td><div class="turkish-cell"><span class="turkish-text">Hoş geldiniz</span><button class="speak-btn" onclick="speak('Hoş geldiniz')">🔊</button></div></td><td>أهلاً وسهلاً بكم</td></tr>
-            <tr><td><div class="turkish-cell"><span class="turkish-text">Hoş bulduk</span><button class="speak-btn" onclick="speak('Hoş bulduk')">🔊</button></div></td><td>أهلاً بك (الرد على أهلاً وسهلاً)</td></tr>
+            <tr><td><div class="turkish-cell"><span class="turkish-text">Hoş bulduk</span><button class="speak-btn" onclick="speak('Hoş bulduk')">🔊</button></div></td><td>أهلاً بك (الرد)</td></tr>
         </tbody>
     </table>
 
-    <h2>2. التعارف والسؤال عن الحال (Tanışma)</h2>
+    <h2>2. التعارف (Tanışma)</h2>
     <table>
         <thead><tr><th>العبارة (Türkçe)</th><th>المعنى بالفصحى</th></tr></thead>
         <tbody>
-            <tr><td><div class="turkish-cell"><span class="turkish-text">Nasılsın?</span><button class="speak-btn" onclick="speak('Nasılsın?')">🔊</button></div></td><td>كيف حالك؟</td></tr>
+            <tr><td><div class="turkish-cell"><span class="turkish-text">Nasılsın?&lrm;</span><button class="speak-btn" onclick="speak('Nasılsın?')">🔊</button></div></td><td>كيف حالك؟</td></tr>
             <tr><td><div class="turkish-cell"><span class="turkish-text">İyiyim, teşekkür ederim</span><button class="speak-btn" onclick="speak('İyiyim, teşekkür ederim')">🔊</button></div></td><td>أنا بخير، شكراً لك</td></tr>
-            <tr><td><div class="turkish-cell"><span class="turkish-text">Sen nasılsın?</span><button class="speak-btn" onclick="speak('Sen nasılsın?')">🔊</button></div></td><td>وأنت كيف حالك؟</td></tr>
-            <tr><td><div class="turkish-cell"><span class="turkish-text">Adın ne?</span><button class="speak-btn" onclick="speak('Adın ne?')">🔊</button></div></td><td>ما اسمك؟</td></tr>
-            <tr><td><div class="turkish-cell"><span class="turkish-text">Benim adım Yamen</span><button class="speak-btn" onclick="speak('Benim adım Yamen')">🔊</button></div></td><td>اسمي يامن</td></tr>
+            <tr><td><div class="turkish-cell"><span class="turkish-text">Adın ne?&lrm;</span><button class="speak-btn" onclick="speak('Adın ne?')">🔊</button></div></td><td>ما اسمك؟</td></tr>
+            <tr><td><div class="turkish-cell"><span class="turkish-text">Benim adım Yamin</span><button class="speak-btn" onclick="speak('Benim adım Yamin')">🔊</button></div></td><td>اسمي يامين</td></tr>
             <tr><td><div class="turkish-cell"><span class="turkish-text">Memnun oldum</span><button class="speak-btn" onclick="speak('Memnun oldum')">🔊</button></div></td><td>تشرفت بمعرفتك</td></tr>
-            <tr><td><div class="turkish-cell"><span class="turkish-text">Ben de memnun oldوم</span><button class="speak-btn" onclick="speak('Ben de memnun oldum')">🔊</button></div></td><td>وأنا أيضاً تشرفت بك</td></tr>
-            <tr><td><div class="turkish-cell"><span class="turkish-text">Nerelisin?</span><button class="speak-btn" onclick="speak('Nerelisin?')">🔊</button></div></td><td>من أين أنت؟</td></tr>
-            <tr><td><div class="turkish-cell"><span class="turkish-text">Kaç yaşındasın?</span><button class="speak-btn" onclick="speak('Kaç yaşındasın?')">🔊</button></div></td><td>كم عمرك؟</td></tr>
+            <tr><td><div class="turkish-cell"><span class="turkish-text">Nerelisin?&lrm;</span><button class="speak-btn" onclick="speak('Nerelisin?')">🔊</button></div></td><td>من أين أنت؟</td></tr>
+            <tr><td><div class="turkish-cell"><span class="turkish-text">Kaç yaşındasın?&lrm;</span><button class="speak-btn" onclick="speak('Kaç yaşındasın?')">🔊</button></div></td><td>كم عمرك؟</td></tr>
         </tbody>
     </table>
 
-    <h2>3. عبارات اللباقة (Nezaket İfadeleri)</h2>
+    <h2>3. عبارات اللباقة (Nezaket)</h2>
     <table>
         <thead><tr><th>العبارة (Türkçe)</th><th>المعنى بالفصحى</th></tr></thead>
         <tbody>
-            <tr><td><div class="turkish-cell"><span class="turkish-text">Lütfen</span><button class="speak-btn" onclick="speak('Lütfen')">🔊</button></div></td><td>من فضلك / رجاءً</td></tr>
-            <tr><td><div class="turkish-cell"><span class="turkish-text">Rica ederim</span><button class="speak-btn" onclick="speak('Rica ederim')">🔊</button></div></td><td>عفواً / على الرحب والسعة</td></tr>
-            <tr><td><div class="turkish-cell"><span class="turkish-text">Afedersiniz</span><button class="speak-btn" onclick="speak('Afedersiniz')">🔊</button></div></td><td>معذرة</td></tr>
+            <tr><td><div class="turkish-cell"><span class="turkish-text">Lütfen</span><button class="speak-btn" onclick="speak('Lütfen')">🔊</button></div></td><td>من فضلك</td></tr>
+            <tr><td><div class="turkish-cell"><span class="turkish-text">Rica ederim</span><button class="speak-btn" onclick="speak('Rica ederim')">🔊</button></div></td><td>عفواً</td></tr>
             <tr><td><div class="turkish-cell"><span class="turkish-text">Özür dilerim</span><button class="speak-btn" onclick="speak('Özür dilerim')">🔊</button></div></td><td>أنا أعتذر</td></tr>
-            <tr><td><div class="turkish-cell"><span class="turkish-text">Sorun değil</span><button class="speak-btn" onclick="speak('Sorun değil')">🔊</button></div></td><td>ليس مشكلة</td></tr>
-            <tr><td><div class="turkish-cell"><span class="turkish-text">Çok yaşa</span><button class="speak-btn" onclick="speak('Çok yaşa')">🔊</button></div></td><td>يرحمك الله (تقال عند العطس)</td></tr>
+            <tr><td><div class="turkish-cell"><span class="turkish-text">Afedersiniz</span><button class="speak-btn" onclick="speak('Afedersiniz')">🔊</button></div></td><td>معذرة</td></tr>
         </tbody>
     </table>
 
     <h2>4. الوداع (Vedalaşma)</h2>
     <table>
-        <thead><tr><th>العبارة (Türkحة)</th><th>المعنى بالفصحى</th></tr></thead>
+        <thead><tr><th>العبارة (Türkçe)</th><th>المعنى بالفصحى</th></tr></thead>
         <tbody>
-            <tr><td><div class="turkish-cell"><span class="turkish-text">Hoşça kal</span><button class="speak-btn" onclick="speak('Hoşça kal')">🔊</button></div></td><td>وداعاً / ابقَ بخير</td></tr>
-            <tr><td><div class="turkish-cell"><span class="turkish-text">Güle güle</span><button class="speak-btn" onclick="speak('Güle güle')">🔊</button></div></td><td>مع السلامة</td></tr>
-            <tr><td><div class="turkish-cell"><span class="turkish-text">Görüşürüz</span><button class="speak-btn" onclick="speak('Görüşürüz')">🔊</button></div></td><td>نلتقي لاحقاً</td></tr>
-            <tr><td><div class="turkish-cell"><span class="turkish-text">Kendine iyi bak</span><button class="speak-btn" onclick="speak('Kendine iyi bak')">🔊</button></div></td><td>اعتنِ بنفسك جيداً</td></tr>
+            <tr><td><div class="turkish-cell"><span class="turkish-text">Hoşça kal</span><button class="speak-btn" onclick="speak('Hoşça kal')">🔊</button></div></td><td>وداعاً</td></tr>
+            <tr><td><div class="turkish-cell"><span class="turkish-text">Güle güله</span><button class="speak-btn" onclick="speak('Güle güle')">🔊</button></div></td><td>مع السلامة</td></tr>
+            <tr><td><div class="turkish-cell"><span class="turkish-text">Görüşürüz</span><button class="speak-btn" onclick="speak('Görüşürüz')">🔊</button></div></td><td>إلى اللقاء</td></tr>
+            <tr><td><div class="turkish-cell"><span class="turkish-text">Kendine iyi bak</span><button class="speak-btn" onclick="speak('Kendine iyi bak')">🔊</button></div></td><td>اعتنِ بنفسك</td></tr>
         </tbody>
     </table>
 
@@ -96,7 +91,7 @@
     function speak(text) {
         const utterance = new SpeechSynthesisUtterance(text);
         utterance.lang = 'tr-TR'; 
-        utterance.rate = 0.8; // سرعة هادئة للنطق
+        utterance.rate = 0.8; 
         window.speechSynthesis.speak(utterance);
     }
 </script>

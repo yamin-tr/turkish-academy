@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yamin Academy | Test</title>
+    <style>
+        body { font-family: sans-serif; background: #f4f4f4; display: flex; justify-content: center; padding: 20px; }
+        .quiz-card { background: white; padding: 30px; border-radius: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); width: 100%; max-width: 500px; text-align: center; border-top: 5px solid #ef4444; }
+        .word { font-size: 2.5rem; font-weight: bold; margin: 20px 0; color: #1f2937; }
+        .options { display: flex; gap: 15px; justify-content: center; }
+        button { flex: 1; padding: 12px; font-size: 1.1rem; cursor: pointer; border: 2px solid #ef4444; background: white; color: #ef4444; border-radius: 8px; font-weight: bold; transition: 0.3s; }
+        button:hover { background: #ef4444; color: white; }
+        .score-board { margin-bottom: 20px; font-size: 1.1rem; color: #6b7280; font-weight: bold; }
+        #feedback { margin-top: 20px; font-weight: bold; min-height: 25px; }
+        .next-btn { display: none; margin: 20px auto 0; padding: 10px 25px; background: #1f2937; color: white; border: none; border-radius: 5px; cursor: pointer; }
+    </style>
+</head>
+<body>
+
+<div class="quiz-card">
+    <div class="score-board">Puan: <span id="score">0</span> / <span id="total">0</span></div>
+    
+    <div id="quiz-content">
+        <p>Uygun eki seçin (اختر اللاحقة المناسبة):</p>
+        <div class="word" id="word-display">Elma</div>
+        
+        <div class="options">
+            <button onclick="check('lar')">-lar</button>
+            <button onclick="check('ler')">-ler</button>
+        </div>
+        
+        <div id="feedback"></div>
+        <button id="next-btn" class="next-btn" onclick="next()">Sonraki (التالي) →</button>
+    </div>
+</div>
+
+<script>
+    const data = [
+        { w: "Elma", c: "lar" },
+        { w: "Defter", c: "ler" },
+        { w: "Göz", c: "ler" },
+        { w: "Okul", c: "lar" },
+        { w: "Kedi", c: "ler" }
+    ];
+
+    let index = 0;
+    let score = 0;
+    document.getElementById('total').innerText = data.length;
+
+    function check(choice) {
+        const feedback = document.getElementById('feedback');
+        if (choice === data[index].c) {
+            if (feedback.innerText === "") { // باش ما يبقاش يزيد النقط يلا كليكاو بزاف المرات
+                score++;
+                document.getElementById('score').innerText = score;
+            }
+            feedback.innerHTML = "<span style='color: green;'>Doğru! ✅</span>";
+            document.getElementById('next-btn').style.display = "block";
+        } else {
+            feedback.innerHTML = "<span style='color: red;'>Yanlış! ❌</span>";
+        }
+    }
+
+    function next() {
+        index++;
+        if (index < data.length) {
+            document.getElementById('word-display').innerText = data[index].w;
+            document.getElementById('feedback').innerText = "";
+            document.getElementById('next-btn').style.display = "none";
+        } else {
+            document.getElementById('quiz-content').innerHTML = `
+                <h2 style='color: #ef4444;'>Tebrikler! 🎉</h2>
+                <p>سليتي الاختبار</p>
+                <div style='font-size: 1.5rem; margin: 20px 0;'>النتيجة النهائية: ${score} / ${data.length}</div>
+                <button onclick="location.reload()" style="background: #1f2937; color: white; border: none; padding: 10px 20px; border-radius: 5px;">إعادة الاختبار</button>
+            `;
+        }
+    }
+</script>
+
+</body>
+</html>

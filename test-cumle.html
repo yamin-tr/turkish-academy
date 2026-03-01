@@ -3,69 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>تمرين الجمل | أكاديمية يامن</title>
+    <title>تمارين الجمع 2 | أكاديمية يامن</title>
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
     <style>
         :root { --main-red: #c8102e; --dark-blue: #2c3e50; }
-        body { font-family: 'Segoe UI', sans-serif; background-color: #f5f6fa; margin: 0; display: flex; justify-content: center; align-items: center; min-height: 100vh; overflow: hidden; }
-        
-        .quiz-container { background: white; padding: 30px; border-radius: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); width: 95%; max-width: 550px; text-align: center; border-top: 6px solid var(--main-red); }
-        .score-board { font-size: 1.1rem; font-weight: bold; color: var(--dark-blue); margin-bottom: 20px; background: #fff5f5; padding: 8px; border-radius: 10px; }
-        
-        /* ستايل الجملة والفراغ */
-        .sentence-display { font-size: 1.6rem; color: var(--dark-blue); margin: 40px 0; line-height: 2; direction: ltr; }
-        
-        /* ستايل الصندوق (السهم الصغير) */
-        .custom-select { 
-            padding: 5px 10px; 
-            font-size: 1.3rem; 
-            border: 2px solid var(--main-red); 
-            border-radius: 8px; 
-            background-color: #fff; 
-            color: var(--main-red); 
-            cursor: pointer;
-            font-weight: bold;
-            outline: none;
-        }
-
-        .instruction-tr { display: block; color: var(--main-red); font-weight: bold; font-size: 1.1rem; margin-bottom: 5px; }
-        .instruction-ar { display: block; color: #666; font-size: 1rem; margin-bottom: 20px; }
-        
-        #check-btn { background: var(--dark-blue); color: white; border: none; padding: 12px 30px; border-radius: 8px; font-size: 1.1rem; cursor: pointer; font-weight: bold; display: inline-block; margin-top: 10px; }
-        #next-btn { background: var(--main-red); color: white; border: none; padding: 12px 35px; border-radius: 8px; cursor: pointer; font-weight: bold; display: none; margin: 20px auto 0; }
-        
-        #message { margin-top: 20px; font-weight: bold; min-height: 25px; }
-        .clapping-hands { font-size: 60px; display: none; animation: clap 0.6s infinite alternate; }
+        body { font-family: 'Segoe UI', sans-serif; background-color: #f5f6fa; margin: 0; display: flex; justify-content: center; align-items: center; min-height: 100vh; overflow-x: hidden; }
+        .quiz-container { background: white; padding: 25px; border-radius: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); width: 90%; max-width: 450px; text-align: center; border-top: 6px solid var(--main-red); box-sizing: border-box; }
+        .score-board { font-size: 1.1rem; font-weight: bold; color: var(--dark-blue); margin-bottom: 20px; background: #fff5f5; padding: 10px; border-radius: 10px; }
+        .sentence-display { font-size: 1.4rem; color: var(--dark-blue); margin: 30px 0; line-height: 1.8; direction: ltr; }
+        .custom-select { padding: 8px; font-size: 1.1rem; border: 2px solid var(--main-red); border-radius: 8px; color: var(--main-red); font-weight: bold; }
+        button { width: 100%; padding: 12px; border-radius: 8px; font-size: 1.1rem; font-weight: bold; cursor: pointer; border: none; margin-top: 10px; }
+        #check-btn { background: var(--dark-blue); color: white; }
+        #next-btn { background: var(--main-red); color: white; display: none; }
+        #message { margin-top: 15px; font-weight: bold; min-height: 25px; }
+        .clapping-hands { font-size: 50px; display: none; animation: clap 0.6s infinite alternate; }
         @keyframes clap { from { transform: scale(1); } to { transform: scale(1.2); } }
     </style>
 </head>
 <body>
 
-<audio id="applauseSound">
-    <source src="https://www.soundjay.com/human/sounds/applause-01.mp3" type="audio/mpeg">
+<audio id="applauseSound" preload="auto">
+    <source src="https://www.myinstants.com/media/sounds/applause_8.mp3" type="audio/mpeg">
 </audio>
 
 <div class="quiz-container">
-    <div class="score-board">النتيجة (Puan): <span id="score">0</span> / <span id="total">0</span></div>
+    <div class="score-board">النتيجة: <span id="score">0</span> / <span id="total">0</span></div>
     
     <div id="game-area">
-        <span class="instruction-tr">:Boşluk için en uygun kelimeyi seçiniz </span>
-        <span class="instruction-ar">اختر الكلمة المناسبة للفراغ:</span>
+        <span style="color:var(--main-red); font-weight:bold;">Boşluk için en uygun kelimeyi seçiniz:</span><br>
+        <span style="color:#666; font-size:0.9rem;">اختر الكلمة المناسبة للفراغ:</span>
         
-        <div class="sentence-display" id="sentence-container">
-            </div>
+        <div class="sentence-display" id="sentence-container"></div>
         
         <button id="check-btn" onclick="verifyAnswer()">تحقق من الإجابة ✅</button>
         <div id="message"></div>
-        <button id="next-btn" onclick="loadNext()">الجملة التالية (Sonraki) ←</button>
+        <button id="next-btn" onclick="loadNext()">الجملة التالية ←</button>
     </div>
 
     <div id="final-screen" style="display:none;">
         <div class="clapping-hands" id="hands">👏🏽👏🏽</div>
         <h2 style="color: var(--main-red);">!Tebrikler</h2>
-        <p>لقد أكملتِ تمرين الجمل بنجاح!</p>
         <div style="font-size: 2.5rem; font-weight: bold; margin: 20px 0;" id="final-score"></div>
-        <button onclick="location.reload()" style="background: var(--main-red); color: white; padding: 15px; border:none; border-radius:12px; width:100%; cursor:pointer; font-weight:bold;">إعادة التحدي 🔄</button>
+        <button onclick="location.reload()" style="background: var(--main-red); color: white;">إعادة التحدي 🔄</button>
     </div>
 </div>
 
@@ -74,22 +53,29 @@
         { start: "İki", options: ["kalem", "kalemler"], correct: "kalem", end: "var." },
         { start: "Bunlar", options: ["öğrenci", "öğrenciler"], correct: "öğrenciler", end: "." },
         { start: "Şu an", options: ["saat", "saatler"], correct: "saat", end: "dokuz." },
-        { start: "Beş", options: ["bardak", "bardaklar"], correct: "bardak", end: "çay aldım." },
-        { start: "Çok güzel", options: ["hayal", "hayaller"], correct: "hayaller", end: "kuruyorum." }, // حالة استثنائية (Hayaller)
+        { start: "Beش", options: ["bardak", "bardaklar"], correct: "bardak", end: "çay aldım." },
+        { start: "Çok güzel", options: ["hayal", "hayaller"], correct: "hayaller", end: "kuruyorum." },
         { start: "Sınıfta", options: ["çocuk", "çocuklar"], correct: "çocuklar", end: "oynuyor." },
         { start: "On", options: ["dakika", "dakikalar"], correct: "dakika", end: "bekle." }
     ];
 
     let currentIdx = 0;
     let score = 0;
+    const applause = document.getElementById('applauseSound');
+
+    // كود سحري: بمجرد ما يلمس المستخدم الشاشة كيتفعل الصوت
+    document.body.addEventListener('click', function() {
+        applause.play().then(() => {
+            applause.pause(); // كنشغلوه ونحبسوه باش المتصفح يقبله
+            applause.currentTime = 0;
+        }).catch(e => {});
+    }, { once: true });
+
     document.getElementById('total').innerText = quizData.length;
 
     function displayQuestion() {
         const q = quizData[currentIdx];
-        const container = document.getElementById('sentence-container');
-        
-        // بناء الجملة مع الـ Select
-        container.innerHTML = `
+        document.getElementById('sentence-container').innerHTML = `
             ${q.start} 
             <select id="user-select" class="custom-select">
                 <option value="">...</option>
@@ -102,30 +88,24 @@
     function verifyAnswer() {
         const userVal = document.getElementById('user-select').value;
         const msg = document.getElementById('message');
-        
-        if (!userVal) {
-            msg.innerHTML = "<span style='color: orange;'>الرجاء اختيار كلمة أولاً! ⚠️</span>";
-            return;
-        }
+        if (!userVal) return;
 
         if (userVal === quizData[currentIdx].correct) {
             score++;
             document.getElementById('score').innerText = score;
-            msg.innerHTML = "<span style='color: #27ae60;'>إجابة صحيحة (Doğru)! ✅</span>";
-            document.getElementById('check-btn').style.display = "none";
-            document.getElementById('next-btn').style.display = "block";
+            msg.innerHTML = "<span style='color: #27ae60;'>Doğru! ✅</span>";
         } else {
-            msg.innerHTML = "<span style='color: #e74c3c;'>إجابة خاطئة (Yanlış)! ❌</span>";
-            document.getElementById('check-btn').style.display = "none";
-            document.getElementById('next-btn').style.display = "block";
+            msg.innerHTML = "<span style='color: #e74c3c;'>Yanlış! ❌</span>";
         }
+        document.getElementById('check-btn').style.display = "none";
+        document.getElementById('next-btn').style.display = "block";
     }
 
     function loadNext() {
         currentIdx++;
         if (currentIdx < quizData.length) {
             document.getElementById('message').innerText = "";
-            document.getElementById('check-btn').style.display = "inline-block";
+            document.getElementById('check-btn').style.display = "block";
             document.getElementById('next-btn').style.display = "none";
             displayQuestion();
         } else {
@@ -138,7 +118,11 @@
         document.getElementById('final-screen').style.display = "block";
         document.getElementById('final-score').innerText = score + " / " + quizData.length;
         document.getElementById('hands').style.display = "block";
-        document.getElementById('applauseSound').play();
+        
+        // تشغيل التصفاق
+        applause.currentTime = 0;
+        applause.play().catch(e => console.log("خطأ في الصوت"));
+
         confetti({ particleCount: 150, spread: 70, origin: { y: 0.6 }, colors: ['#c8102e', '#ffffff'] });
     }
 

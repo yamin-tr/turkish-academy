@@ -11,8 +11,11 @@
         
         .quiz-container { background: white; padding: 30px; border-radius: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); width: 90%; max-width: 450px; text-align: center; border-top: 6px solid var(--main-red); position: relative; }
         .score-board { font-size: 1.2rem; font-weight: bold; color: var(--dark-blue); margin-bottom: 20px; background: #fff5f5; padding: 10px; border-radius: 10px; }
-        .word-box { font-size: 3.5rem; font-weight: bold; color: var(--dark-blue); margin: 30px 0; }
+        .word-box { font-size: 3.5rem; font-weight: bold; color: var(--dark-blue); margin: 20px 0; }
         
+        .question-text { color: #555; font-size: 1.1rem; margin-bottom: 10px; line-height: 1.5; }
+        .turkish-text { display: block; font-weight: bold; color: var(--main-red); margin-bottom: 5px; }
+
         .options { display: flex; gap: 15px; justify-content: center; }
         .btn-opt { flex: 1; padding: 15px; font-size: 1.5rem; border: 2px solid var(--main-red); background: white; color: var(--main-red); border-radius: 12px; cursor: pointer; font-weight: bold; transition: 0.3s; }
         .btn-opt:hover { background: var(--main-red); color: white; }
@@ -32,10 +35,14 @@
 </audio>
 
 <div class="quiz-container">
-    <div class="score-board">النتيجة: <span id="score">0</span> من <span id="total">0</span></div>
+    <div class="score-board">النتيجة (Puan): <span id="score">0</span> / <span id="total">0</span></div>
     
     <div id="game-area">
-        <p style="color: #666;">اختر اللاحقة الصحيحة للكلمة التالية:</p>
+        <div class="question-text">
+            <span class="turkish-text">Aşağıdaki kelime için uygun eki seçiniz:</span>
+            <span>اختر اللاحقة المناسبة للكلمة التالية:</span>
+        </div>
+        
         <div class="word-box" id="display-word">Saat</div>
         
         <div class="options">
@@ -44,14 +51,14 @@
         </div>
         
         <div id="message"></div>
-        <button id="next-btn" class="next-btn" onclick="loadQuestion()">الكلمة التالية ←</button>
+        <button id="next-btn" class="next-btn" onclick="loadQuestion()">الكلمة التالية (Sonraki) ←</button>
     </div>
 
     <div id="final-screen" style="display:none;">
         <div class="clapping-hands" id="hands">👏🏽👏🏽</div>
         <h2 style="color: var(--main-red); font-size: 1.8rem;">!Tebrikler <br> أحسنتِ صنعاً!</h2>
         <div style="font-size: 2.5rem; font-weight: bold; margin: 20px 0; color: var(--dark-blue);" id="final-score"></div>
-        <button onclick="location.reload()" class="btn-opt" style="background: var(--main-red); color: white; width:100%;">إعادة الاختبار 🔄</button>
+        <button onclick="location.reload()" class="btn-opt" style="background: var(--main-red); color: white; width:100%;">إعادة الاختبار (Tekrar) 🔄</button>
     </div>
 </div>
 
@@ -84,9 +91,9 @@
         if (choice === current.correct) {
             score++;
             document.getElementById('score').innerText = score;
-            msg.innerHTML = "<span style='color: #27ae60;'>إجابة صحيحة ✅</span>";
+            msg.innerHTML = "<span style='color: #27ae60;'>إجابة صحيحة (Doğru) ✅</span>";
         } else {
-            msg.innerHTML = "<span style='color: #e74c3c;'>إجابة خاطئة ❌</span>";
+            msg.innerHTML = "<span style='color: #e74c3c;'>إجابة خاطئة (Yanlış) ❌</span>";
         }
         document.getElementById('next-btn').style.display = "block";
     }
@@ -111,14 +118,14 @@
         
         // تشغيل صوت التصفاق
         const audio = document.getElementById('applauseSound');
-        audio.play().catch(e => console.log("الصوت يحتاج تفاعل مع الصفحة أولاً"));
+        audio.play();
 
         // مؤثرات الحلويات المتطايرة
         confetti({
             particleCount: 150,
             spread: 70,
             origin: { y: 0.6 },
-            colors: ['#c8102e', '#ffffff', '#2c3e50']
+            colors: ['#c8102e', '#ffffff']
         });
     }
 </script>

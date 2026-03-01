@@ -3,109 +3,206 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>قاعدة الجمع المفصلة | أكاديمية يامين</title>
+    <title>قاعدة الجمع الملونة | أكاديمية يامين</title>
     <style>
-        :root { --main-red: #c8102e; --dark-blue: #2c3e50; }
-        body { font-family: 'Segoe UI', sans-serif; margin: 0; background-color: #f4f7f6; color: #333; line-height: 1.8; padding: 20px; }
-        .container { max-width: 900px; margin: auto; background: white; padding: 35px; border-radius: 25px; box-shadow: 0 15px 35px rgba(0,0,0,0.1); }
+        :root { 
+            --dark-blue: #2c3e50; 
+            --bright-red: #ff4757; 
+            --cool-blue: #54a0ff;
+            --soft-green: #2ed573;
+            --sunny-yellow: #ffa502;
+            --bg-color: #f1f2f6;
+        }
         
-        h1 { color: var(--main-red); text-align: center; font-size: 2rem; border-bottom: 4px double #eee; padding-bottom: 20px; }
-        h2 { color: var(--dark-blue); background: #fff5f5; padding: 12px 20px; border-right: 6px solid var(--main-red); margin-top: 40px; border-radius: 0 10px 10px 0; }
-        
-        .rule-box { background: #f9f9f9; border: 1px solid #ddd; padding: 20px; border-radius: 15px; margin: 20px 0; }
-        .vowel-group { display: flex; justify-content: space-around; flex-wrap: wrap; gap: 20px; margin-top: 15px; }
-        .vowel-card { background: white; padding: 20px; border-radius: 15px; border: 2px solid #eee; flex: 1; min-width: 280px; text-align: center; transition: 0.3s; }
-        .vowel-card:hover { border-color: var(--main-red); transform: translateY(-5px); }
-        .vowel-card b { font-size: 2rem; color: var(--main-red); display: block; margin: 10px 0; }
+        body { 
+            font-family: 'Segoe UI', sans-serif; 
+            margin: 0; 
+            background-color: var(--bg-color); 
+            color: #2f3542; 
+            line-height: 1.8; 
+            padding: 15px; 
+        }
 
-        .example-table { width: 100%; border-collapse: collapse; margin: 25px 0; background: white; }
-        .example-table th, .example-table td { border: 1px solid #eee; padding: 15px; text-align: center; }
-        .example-table th { background: var(--dark-blue); color: white; }
-        .example-table tr:nth-child(even) { background-color: #fafafa; }
+        .container { 
+            max-width: 900px; 
+            margin: auto; 
+            background: white; 
+            padding: 30px; 
+            border-radius: 30px; 
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1); 
+            border: 8px solid #ffffff;
+        }
         
-        .sentence-box { background: #eef2f3; padding: 20px; border-radius: 15px; border-left: 5px solid var(--dark-blue); margin: 15px 0; direction: ltr; text-align: left; }
-        .sentence-box i { color: #666; font-size: 0.9rem; display: block; direction: rtl; text-align: right; margin-top: 5px; }
+        h1 { 
+            color: var(--bright-red); 
+            text-align: center; 
+            font-size: 2.2rem; 
+            background: #fff5f5;
+            padding: 20px;
+            border-radius: 20px;
+            margin-bottom: 30px;
+        }
 
-        .note { background: #fff3cd; border-right: 6px solid #ffc107; padding: 20px; border-radius: 10px; margin: 30px 0; font-weight: bold; }
-        .back-link { display: inline-block; margin-top: 30px; text-decoration: none; color: var(--dark-blue); font-weight: bold; border-bottom: 2px solid var(--main-red); }
+        h2 { 
+            color: white; 
+            background: var(--dark-blue); 
+            padding: 12px 25px; 
+            display: inline-block;
+            border-radius: 50px;
+            font-size: 1.3rem;
+            margin-top: 40px;
+        }
+
+        /* كروت القواعد الملونة */
+        .vowel-container { 
+            display: flex; 
+            flex-wrap: wrap; 
+            gap: 20px; 
+            margin: 25px 0; 
+        }
+
+        .card-lar { 
+            flex: 1; 
+            min-width: 280px; 
+            background: #fff9f9; 
+            border: 3px solid var(--bright-red); 
+            border-radius: 20px; 
+            padding: 20px; 
+            text-align: center; 
+        }
+
+        .card-ler { 
+            flex: 1; 
+            min-width: 280px; 
+            background: #f0f7ff; 
+            border: 3px solid var(--cool-blue); 
+            border-radius: 20px; 
+            padding: 20px; 
+            text-align: center; 
+        }
+
+        .vowel-display { font-size: 2.5rem; font-weight: bold; display: block; margin: 10px 0; }
+        .lar-text { color: var(--bright-red); }
+        .ler-text { color: var(--cool-blue); }
+
+        /* جداول ملونة */
+        .styled-table { 
+            width: 100%; 
+            border-collapse: collapse; 
+            border-radius: 15px; 
+            overflow: hidden; 
+            margin: 20px 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        .styled-table th { background: var(--dark-blue); color: white; padding: 15px; }
+        .styled-table td { padding: 15px; text-align: center; border-bottom: 1px solid #eee; }
+        .styled-table tr:hover { background: #fdfdfd; }
+
+        /* فقرات الجمل الملونة */
+        .sentence-item { 
+            background: white; 
+            border-right: 8px solid var(--soft-green); 
+            padding: 15px 20px; 
+            margin: 15px 0; 
+            border-radius: 10px;
+            box-shadow: 2px 2px 10px rgba(0,0,0,0.02);
+            direction: ltr;
+            text-align: left;
+        }
+        .sentence-item i { direction: rtl; display: block; text-align: right; color: #747d8c; margin-top: 5px; }
+
+        /* تنبيهات ملونة */
+        .alert-box { 
+            background: #fff3cd; 
+            border: 2px dashed var(--sunny-yellow); 
+            padding: 20px; 
+            border-radius: 20px; 
+            margin: 30px 0;
+            position: relative;
+        }
+        .alert-box b { color: #e67e22; font-size: 1.2rem; }
+
+        .back-btn { 
+            display: block; 
+            width: fit-content; 
+            margin: 40px auto 10px; 
+            padding: 12px 35px; 
+            background: var(--dark-blue); 
+            color: white; 
+            text-decoration: none; 
+            border-radius: 50px; 
+            transition: 0.3s;
+        }
+        .back-btn:hover { background: var(--bright-red); transform: scale(1.05); }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <h1>📖 شرح قاعدة الجمع (Çoğul Ekleri)</h1>
+    <h1>🎨 قاعدة الجمع (Çoğul Ekleri)</h1>
 
-    <p style="font-size: 1.1rem;">تعتبر قاعدة الجمع من أسهل القواعد في اللغة التركية، وهي تعتمد كلياً على **التوافق الصوتي الثنائي**. أي أننا ننظر فقط إلى **آخر حرف صوتي** في الكلمة لنقرر ماذا سنضيف.</p>
+    <p style="text-align: center; font-weight: bold; color: #57606f;">أهلاً بكِ يا يامين! القصة كاملة هنا في آخر حرف صوتي في الكلمة:</p>
 
-    <h2>1. كيف نختار اللاحقة المناسبة؟</h2>
-    <div class="vowel-group">
-        <div class="vowel-card">
-            <p>إذا كان آخر حرف صوتي **ثقيل**:</p>
-            <b>a, ı, o, u</b>
-            <p>نضيف اللاحقة: <span style="color:var(--main-red); font-weight:bold; font-size:1.5rem;">-lar</span></p>
+    <div class="vowel-container">
+        <div class="card-lar">
+            <span style="color: #666;">إذا كانت الحروف ثقيلة:</span>
+            <span class="vowel-display lar-text">A, I, O, U</span>
+            <h3 class="lar-text">نضيف: lar-</h3>
+            <p>مثال: <b>Balık</b> (سمكة) ⮕ <b>Balıklar</b></p>
         </div>
-        <div class="vowel-card">
-            <p>إذا كان آخر حرف صوتي **خفيف**:</p>
-            <b>e, i, ö, ü</b>
-            <p>نضيف اللاحقة: <span style="color:var(--main-red); font-weight:bold; font-size:1.5rem;">-ler</span></p>
+
+        <div class="card-ler">
+            <span style="color: #666;">إذا كانت الحروف خفيفة:</span>
+            <span class="vowel-display cool-blue">E, İ, Ö, Ü</span>
+            <h3 class="ler-text">نضيف: ler-</h3>
+            <p>مثال: <b>Kedi</b> (قطة) ⮕ <b>Kediler</b></p>
         </div>
     </div>
 
-    <h2>2. أمثلة على الكلمات (Kelime Örnekleri)</h2>
-    <table class="example-table">
+    <h2>🌟 أمثلة تطبيقية</h2>
+    <table class="styled-table">
         <thead>
-            <tr>
-                <th>المفرد (Tekil)</th>
-                <th>الجمع (Çoğul)</th>
+            <tr style="background: var(--cool-blue);">
+                <th>المفرد</th>
+                <th>الجمع</th>
                 <th>المعنى</th>
             </tr>
         </thead>
         <tbody>
-            <tr><td>Araba</td><td>Araba<b>lar</b></td><td>سيارات</td></tr>
-            <tr><td>Kapı</td><td>Kapı<b>lar</b></td><td>أبواب</td></tr>
-            <tr><td>Okul</td><td>Okul<b>lar</b></td><td>مدارس</td></tr>
-            <tr><td>Ev</td><td>Ev<b>ler</b></td><td>بيوت</td></tr>
-            <tr><td>Kedi</td><td>Kedi<b>ler</b></td><td>قطط</td></tr>
-            <tr><td>Göz</td><td>Göz<b>ler</b></td><td>عيون</td></tr>
-            <tr><td>Gün</td><td>Gün<b>ler</b></td><td>أيام</td></tr>
+            <tr><td><b>Masa</b></td><td class="lar-text"><b>Masalar</b></td><td>طاولات</td></tr>
+            <tr><td><b>Defter</b></td><td class="ler-text"><b>Defterler</b></td><td>دفاتر</td></tr>
+            <tr><td><b>Yol</b></td><td class="lar-text"><b>Yollar</b></td><td>طرق</td></tr>
+            <tr><td><b>Gül</b></td><td class="ler-text"><b>Güller</b></td><td>ورود</td></tr>
         </tbody>
     </table>
 
-    <h2>3. أمثلة في جمل كاملة (Cümle Örnekleri)</h2>
-    <p>إليكِ كيف نستخدم الجمع داخل الجملة:</p>
-    
-    <div class="sentence-box">
-        <b>Çocuklar parkta oynuyor.</b>
-        <i>الأطفال يلعبون في الحديقة.</i>
+    <h2>💬 جمل كاملة للتطبيق</h2>
+    <div class="sentence-item">
+        <b style="color: var(--cool-blue);">Pencereler açık.</b>
+        <i>النوافذ مفتوحة.</i>
+    </div>
+    <div class="sentence-item">
+        <b style="color: var(--bright-red);">Ağaçlar çok yüksek.</b>
+        <i>الأشجار عالية جداً.</i>
+    </div>
+    <div class="sentence-item">
+        <b style="color: var(--dark-blue);">Kuşlar uçuyor.</b>
+        <i>العصافير تطير.</i>
     </div>
 
-    <div class="sentence-box">
-        <b>Bu kitaplar çok faydalı.</b>
-        <i>هذه الكتب مفيدة جداً.</i>
+    <div class="alert-box">
+        <b>💡 قاعدة "الرقم" (مهمة بزاف):</b><br>
+        ملي كيكون عندنا رقم، الاسم كيبقى مفرد وخا المعنى جمع!<br>
+        ✅ <b>Dört kalem</b> (أربعة أقلام) | ❌ <del>Dört kalemler</del>
     </div>
 
-    <div class="sentence-box">
-        <b>Öğrenciler sınıfa girdi.</b>
-        <i>الطلاب دخلوا إلى الصف.</i>
+    <div class="alert-box" style="background: #e1f5fe; border-color: var(--cool-blue);">
+        <b>🎭 الكلمات "المتمردة" (استثناءات):</b><br>
+        كلمات كتسالي بحرف ثقيل ولكن كتاخد <b>ler</b> حيت أصلها عربي/أجنبي:<br>
+        ✨ Saat<b>ler</b> | Hayal<b>ler</b> | Kalp<b>ler</b>
     </div>
 
-    <div class="sentence-box">
-        <b>Masada bardaklar var.</b>
-        <i>توجد كؤوس على الطاولة.</i>
-    </div>
-
-    <h2>4. ملاحظات هامة جداً ⚠️</h2>
-    <div class="note">
-        1. القاعدة الذهبية: إذا وُجد رقم أو كلمة تدل على الكمية (بزاف، قليل..) لا نجمع الاسم!<br>
-        مثال: <span style="color:var(--main-red)">Beş elma</span> (5 تفاحات) ✅ | <del>Beş elmalar</del> ❌
-    </div>
-
-    <div class="note" style="border-right-color: #2ecc71; background: #e8f8f5;">
-        2. الكلمات الدخيلة: هناك كلمات من أصل عربي أو أجنبي تشذ عن القاعدة (تأخذ ler بدل lar).<br>
-        أشهرها: <span style="color:var(--main-red)">Saatler, Hayaller, Kalpler, Roller.</span>
-    </div>
-
-    <a href="index.html" class="back-link">🔙 العودة للقائمة الرئيسية</a>
+    <a href="index.html" class="back-btn">🔙 العودة للرئيسية</a>
 </div>
 
 </body>

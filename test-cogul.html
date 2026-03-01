@@ -8,40 +8,32 @@
     <style>
         :root { --main-red: #c8102e; --dark-blue: #2c3e50; }
         body { font-family: 'Segoe UI', sans-serif; background-color: #f5f6fa; margin: 0; display: flex; justify-content: center; align-items: center; min-height: 100vh; overflow: hidden; }
-        
-        .quiz-container { background: white; padding: 30px; border-radius: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); width: 90%; max-width: 450px; text-align: center; border-top: 6px solid var(--main-red); position: relative; }
+        .quiz-container { background: white; padding: 30px; border-radius: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); width: 90%; max-width: 450px; text-align: center; border-top: 6px solid var(--main-red); }
         .score-board { font-size: 1.2rem; font-weight: bold; color: var(--dark-blue); margin-bottom: 20px; background: #fff5f5; padding: 10px; border-radius: 10px; }
         .word-box { font-size: 3.5rem; font-weight: bold; color: var(--dark-blue); margin: 20px 0; }
-        
-        .question-text { color: #555; font-size: 1.1rem; margin-bottom: 10px; line-height: 1.5; }
-        .turkish-text { display: block; font-weight: bold; color: var(--main-red); margin-bottom: 5px; }
-
+        .instruction-tr { display: block; color: var(--main-red); font-weight: bold; font-size: 1rem; margin-bottom: 5px; }
+        .instruction-ar { display: block; color: #555; font-size: 0.95rem; margin-bottom: 15px; }
         .options { display: flex; gap: 15px; justify-content: center; }
         .btn-opt { flex: 1; padding: 15px; font-size: 1.5rem; border: 2px solid var(--main-red); background: white; color: var(--main-red); border-radius: 12px; cursor: pointer; font-weight: bold; transition: 0.3s; }
         .btn-opt:hover { background: var(--main-red); color: white; }
-        
         #message { margin-top: 20px; font-weight: bold; min-height: 25px; font-size: 1.1rem; }
-        .next-btn { display: none; margin: 20px auto 0; padding: 12px 35px; background: var(--dark-blue); color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: bold; font-size: 1rem; }
-        
-        /* حركة اليدين */
+        .next-btn { display: none; margin: 20px auto 0; padding: 12px 35px; background: var(--dark-blue); color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: bold; }
         .clapping-hands { font-size: 60px; display: none; animation: clap 0.6s infinite alternate; margin-bottom: 10px; }
-        @keyframes clap { from { transform: scale(1) rotate(-5deg); } to { transform: scale(1.3) rotate(5deg); } }
+        @keyframes clap { from { transform: scale(1); } to { transform: scale(1.3); } }
     </style>
 </head>
 <body>
 
 <audio id="applauseSound">
-    <source src="https://assets.mixkit.co/active_storage/sfx/201/201-preview.mp3" type="audio/mpeg">
+    <source src="https://www.soundjay.com/human/sounds/applause-01.mp3" type="audio/mpeg">
 </audio>
 
 <div class="quiz-container">
     <div class="score-board">النتيجة (Puan): <span id="score">0</span> / <span id="total">0</span></div>
     
     <div id="game-area">
-        <div class="question-text">
-            <span class="turkish-text">Aşağıdaki kelime için uygun eki seçiniz:</span>
-            <span>اختر اللاحقة المناسبة للكلمة التالية:</span>
-        </div>
+        <span class="instruction-tr">Aşağıdaki kelime için uygun eki seçiniz:</span>
+        <span class="instruction-ar">اختر اللاحقة المناسبة للكلمة التالية:</span>
         
         <div class="word-box" id="display-word">Saat</div>
         
@@ -56,9 +48,10 @@
 
     <div id="final-screen" style="display:none;">
         <div class="clapping-hands" id="hands">👏🏽👏🏽</div>
-        <h2 style="color: var(--main-red); font-size: 1.8rem;">!Tebrikler <br> أحسنتِ صنعاً!</h2>
-        <div style="font-size: 2.5rem; font-weight: bold; margin: 20px 0; color: var(--dark-blue);" id="final-score"></div>
-        <button onclick="location.reload()" class="btn-opt" style="background: var(--main-red); color: white; width:100%;">إعادة الاختبار (Tekrar) 🔄</button>
+        <h2 style="color: var(--main-red);">!Tebrikler</h2>
+        <p>لقد أتممتِ الاختبار بنجاح</p>
+        <div style="font-size: 2.5rem; font-weight: bold; margin: 20px 0;" id="final-score"></div>
+        <button onclick="location.reload()" class="btn-opt" style="background: var(--main-red); color: white; width:100%;">إعادة الاختبار 🔄</button>
     </div>
 </div>
 
@@ -79,16 +72,13 @@
     let currentIdx = 0;
     let score = 0;
     let answered = false;
-
     document.getElementById('total').innerText = questions.length;
 
     function checkAnswer(choice) {
         if (answered) return;
         answered = true;
         const msg = document.getElementById('message');
-        const current = questions[currentIdx];
-
-        if (choice === current.correct) {
+        if (choice === questions[currentIdx].correct) {
             score++;
             document.getElementById('score').innerText = score;
             msg.innerHTML = "<span style='color: #27ae60;'>إجابة صحيحة (Doğru) ✅</span>";
@@ -106,29 +96,22 @@
             document.getElementById('next-btn').style.display = "none";
             answered = false;
         } else {
-            showSuccess();
+            showResult();
         }
     }
 
-    function showSuccess() {
+    function showResult() {
         document.getElementById('game-area').style.display = "none";
         document.getElementById('final-screen').style.display = "block";
         document.getElementById('final-score').innerText = score + " / " + questions.length;
         document.getElementById('hands').style.display = "block";
         
         // تشغيل صوت التصفاق
-        const audio = document.getElementById('applauseSound');
-        audio.play();
+        document.getElementById('applauseSound').play();
 
-        // مؤثرات الحلويات المتطايرة
-        confetti({
-            particleCount: 150,
-            spread: 70,
-            origin: { y: 0.6 },
-            colors: ['#c8102e', '#ffffff']
-        });
+        // مؤثرات الحلويات
+        confetti({ particleCount: 150, spread: 70, origin: { y: 0.6 }, colors: ['#c8102e', '#ffffff'] });
     }
 </script>
-
 </body>
 </html>
